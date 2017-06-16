@@ -1,0 +1,79 @@
+<%
+
+graph_scale = 0.3
+question_to_answers_margin = 10
+colors = [
+      '#FDD84E',  # yellow
+      '#6886B4',  # blue
+      '#72AE6E',  # green
+      '#D1695E',  # red
+      '#8A6EAF',  # purple
+      '#EFAA43',  # orange
+      '#FFFFFF'
+    ]
+
+pdf = Prawn::Document.new(page_size: 'A4')
+
+pdf.move_down 50
+
+# TODO Replace 300 with pdf.width
+pdf.text '<u>' + @fieldset.title + '</u>',
+  size: 24,
+  inline_format: :true,
+  align: :center
+
+
+pdf.move_down 150
+
+@fieldset.fields.reject{ |f| f.question_type == 'open' }.each_with_index do |field, i|
+  old_cursor = pdf.cursor
+  pdf.text "#{field.question_id}. #{field.question}"
+  pdf.stroke_horizontal_rule
+
+  g = Gruff::Pie.new
+  g.theme = {
+    :colors => colors,
+    :font_color => 'black',
+    :background_colors => 'transparent'
+  }
+  g.hide_legend = true
+  g.legend_font_size = 38
+
+  pdf.move_down question_to_answers_margin
+  rows = []
+  field.answers.sort{ |a, b| b.number <=> a.number }.each_with_index do |answer, i|
+    g.data answer.text_answer, answer.number
+    square = Prawn::Table::Cell.make pdf, nil
+    top_square = Prawn::Table::Cell.make pdf, nil
+    bot_square = Prawn::Table::Cell.make pdf, nil
+    square.background_color = colors[i].sub('#', '')
+    top_square.background_color = 'FFFFFF'
+    bot_square.background_color = 'FFFFFF'
+    nt = pdf.make_table([[top_square], [square], [bot_square]]) do |table|
+      table.columns(0).height = 8
+      table.columns(0..2).each { |col| col.borders = [] }
+    end
+    rows << [ nt, answer.text_answer, answer.number ]
+  end
+  left_table = pdf.make_table(rows) do |table|
+    table.columns(0..2).each { |col| col.borders = [] }
+    table.columns(0).width = 10
+    table.columns(1).width = 275
+    table.columns(2).width = 50
+    table.columns(2).style align: :center
+  end
+
+  left_table.draw
+
+  pdf.image StringIO.new(g.to_blob), { fit: [ 250, 250 ], at: [335, old_cursor - question_to_answers_margin] }
+
+  if i % 3 == 1
+    pdf.start_new_page
+  else
+    pdf.move_cursor_to old_cursor - 250
+  end
+end
+
+%>
+
+<%= pdf.render.html_safe %>

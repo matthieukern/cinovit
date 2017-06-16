@@ -1,0 +1,189 @@
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+html, body {
+    width: 100%;
+    font-family: Palatino, Helvetica, sans-serif;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-bottom: 80px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    border: 1px solid #3498DB;
+    box-shadow: 0 5px 0 0 #faedb5;
+    outline: none;
+    font-family: Palatino, sans-serif;
+    font-size: 15px;
+}
+
+button {
+	font-size: 300%;
+    font-weight: 100;
+    vertical-align: top;
+    width: 100%;
+    padding: 3%;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #3498DB;
+    border: 0;
+    border-bottom: 4px solid #2980B9;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+#infos {
+    width: 100%;
+    position:fixed;
+}
+
+#toolbar {
+    width: 100%;
+}
+
+#cinov {
+    padding-top: 5%;
+    width: 100%;
+	margin-bottom: 80px;
+}
+
+#ansList {
+	padding-top: 5%;
+	padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80%;
+}
+
+#ansList td {
+	display: block;
+}
+
+.ansButton {
+    bottom: 5px;
+}
+
+.questionName {
+	width: 80%;
+    font-size: 400%;
+    font-weight: 100;
+    text-align: center;
+    margin: auto;
+}
+
+.questionDesc {
+	width: 80%;
+    font-size: 200%;
+    font-weight: 100;
+    color: #666666;
+    text-align: center;
+    margin: auto;
+}
+
+.questionInd {
+	width: 80%;
+    font-size: 150%;
+    font-weight: 100;
+    color: #C96666;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.answerName {
+    cursor: pointer;
+    font-size: 300%;
+}
+
+.answerDesc {
+    cursor: pointer;
+    font-size: 200%;
+    font-weight: 100;
+    color: #666666;
+}
+
+.nextQuestion {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    display: none;
+}
+
+.labelForNextQuestion {
+    display: block;
+    padding: 0px;
+    width: 100%;
+}
+
+.selectLabel label {
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background: #E9E9FF;
+}
+
+.selectLabel :checked + label {
+	background-color: #C9C7FF;
+}
+
+.errorDisp {
+	color: white;
+	background-color: #FE1555;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	display:block;
+	text-align: center;
+	font-size: 200%;
+}
+
+.warningDisp {
+	color: white;
+	background-color: #FF7512;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	display:block;
+	text-align: center;
+	font-size: 200%;
+}
+
+.successDisp {
+	color: white;
+	background-color: #72CE55;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	display:block;
+	text-align: center;
+	font-size: 200%;
+}
+
+.infoDisp {
+	color: white;
+	background-color: #CCBB32;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	display:block;
+	text-align: center;
+	font-size: 200%;
+}

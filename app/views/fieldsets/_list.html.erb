@@ -1,0 +1,32 @@
+<table class="tab">
+  <th>
+    Titre
+  </th>
+  <th width=10%>
+    Stats
+  </th>
+  <th width=15%>
+    Export CSV
+  </th>
+  <th width=10%>
+    Supprimer
+  </th>
+  <% @fieldsets.each do |fieldset| %>
+    <tr>
+    <td>
+      <%= link_to fieldset.title, fieldset %>
+    </td>
+    <td>
+      <%= link_to (image_tag 'stats.png', size: '32x32', alt: '[X]'), fieldset_stats_path(fieldset.id) %>
+    </td>
+    <td>
+      <%= link_to (image_tag 'csv.png', size: '32x32', alt: '[X]'), fieldset_export_path(fieldset.id) %>
+    </td>
+    <td>
+      <%= link_to (image_tag "red-cross.png", size: "32x32", alt: "[X]"),
+        fieldset, method: :delete, data: { confirm: "Are you sure?" } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

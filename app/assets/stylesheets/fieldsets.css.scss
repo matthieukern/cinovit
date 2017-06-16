@@ -1,0 +1,48 @@
+// Place all the styles related to the fieldsets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1
+{
+  text-align: center;
+}
+
+.tab
+{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tab th, td
+{
+  text-align: center;
+  border: 1px solid black;
+  padding-top: 2px;
+}
+
+.nofs
+{
+  margin-left: 12.5%;
+  width: 75%;
+}
+
+.ff_fieldset *
+{
+  margin-left: 25%;
+  width: 50%;
+}
+
+label
+{
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.new
+{
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
